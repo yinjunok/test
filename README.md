@@ -1,29 +1,19 @@
-# form
+## 所用的库
+[vue](https://cn.vuejs.org/v2/guide/)  
+[Vant](https://youzan.github.io/vant/#/zh-CN/intro)  
+[axios](https://github.com/axios/axios)  
+[vue-cli](https://cli.vuejs.org/config/)
 
-## Project setup
-```
-yarn install
-```
+## 构建方法
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+1. 安装 node
+2. `npm install` 安装依赖
+3. `npm run build` 构建项目
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+## 部署
 
-### Run your tests
-```
-yarn run test
-```
+将生成的 `dist` 目录下的静态文件放到服务器静态文件根目录, 
+配置指向 `index.html` 文件路径.
 
-### Lints and fixes files
-```
-yarn run lint
-```
+输出目录可以到 `vue.config.js` 里面修改.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
