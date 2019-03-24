@@ -37,7 +37,7 @@
               <div class="title"><span class="required">*</span>报名项目</div>
               <van-radio-group v-model="entry_project">
                 <van-radio name="1">跋园雅托高能班</van-radio>
-                <van-radio name="2">留学申研</van-radio>
+                <van-radio name="2">名校留学申研</van-radio>
                 <van-radio name="3">校际联合培养</van-radio>
                 <van-radio name="4">名校学分</van-radio>
                 <van-radio name="5">社会文化体验</van-radio>
