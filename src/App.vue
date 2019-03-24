@@ -43,7 +43,7 @@
                 <van-radio name="5">社会文化体验</van-radio>
                 <van-radio name="6">实习实践</van-radio>
                 <van-radio name="7">精品主题类</van-radio>
-                <van-radio name="8">其他</van-radio>
+                <van-radio name="0">其他</van-radio>
               </van-radio-group>
             </div>
 
