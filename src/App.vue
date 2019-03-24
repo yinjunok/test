@@ -4,14 +4,14 @@
       <van-col span="24">
         <div class="banner-wrap">
           <img class="banner" src="./assets/school.jpg" alt>
-          <span class="banner-title">华师出国留学服务中心项目报名表</span>
+          <span class="banner-title">华中师范大学在校生项目报名</span>
         </div>
       </van-col>
     </van-row>
     <van-row>
       <van-col span="24">
         <div class="intro">
-          <van-panel title="请填写以下信息">
+          <van-panel title="请填写以下信息, 提交后, 请关注微信公众号, 了解报名项目的相关信息">
             <van-cell-group>
               <van-field required v-model="name" label="姓名" placeholder="请输入姓名"/>
               <van-field required v-model="mobile" maxlength='11' type="number" label="手机" placeholder="请输入手机号码"/>
@@ -37,7 +37,13 @@
               <div class="title"><span class="required">*</span>报名项目</div>
               <van-radio-group v-model="entry_project">
                 <van-radio name="1">跋园雅托高能班</van-radio>
-                <van-radio name="2">海外交流交换项目</van-radio>
+                <van-radio name="2">留学申研</van-radio>
+                <van-radio name="3">校际联合培养</van-radio>
+                <van-radio name="4">名校学分</van-radio>
+                <van-radio name="5">社会文化体验</van-radio>
+                <van-radio name="6">实习实践</van-radio>
+                <van-radio name="7">精品主题类</van-radio>
+                <van-radio name="8">其他</van-radio>
               </van-radio-group>
             </div>
 
@@ -83,6 +89,12 @@
         {{ item }}
       </p>
     </div>
+    </van-dialog>
+
+    <van-dialog v-model="submitSuccess">
+      <div class="submit-success">
+        提交成功, 请关注微信公众号, 了解报名项目的相关信息.
+      </div>
     </van-dialog>
   </div>
 </template>
@@ -141,8 +153,11 @@ export default {
       english_test_list: ['雅思', '托福', '四级', '六级'],
       error_list: [],
 
-      // 弹窗控制
+      // 错误弹窗控制
       showError: false,
+
+      // 提交成功弹窗控制
+      submitSuccess: true,
 
       // 提交中
       submiting: false,
@@ -225,7 +240,7 @@ export default {
       );
 
       if (resData.status === 1) {
-        Toast.success(resData.msg);
+        Toast.success(`${resData.msg}. 请关注微信公众号, 了解报名项目的相关信息`);
       } else {
         this.error_list.push(resData.msg);
         this.showError = true;
@@ -312,5 +327,12 @@ export default {
 
 .van-cell:not(:last-child)::after {
   left: 0;
+}
+
+.submit-success {
+  color: #000;
+  font-size: 16px;
+  padding: 20px 20px 10px;
+  line-height: 1.5;
 }
 </style>
