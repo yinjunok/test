@@ -157,7 +157,7 @@ export default {
       showError: false,
 
       // 提交成功弹窗控制
-      submitSuccess: true,
+      submitSuccess: false,
 
       // 提交中
       submiting: false,
@@ -240,7 +240,8 @@ export default {
       );
 
       if (resData.status === 1) {
-        Toast.success(`${resData.msg}. 请关注微信公众号, 了解报名项目的相关信息`);
+        // Toast.success(`${resData.msg}. 请关注微信公众号, 了解报名项目的相关信息`);
+        this.submitSuccess = true;
       } else {
         this.error_list.push(resData.msg);
         this.showError = true;
