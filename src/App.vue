@@ -52,47 +52,8 @@
                 </div>
                 <van-radio name="2">跋园雅托高能班</van-radio>
                 <van-radio name="3">其他</van-radio>
-                <!-- <van-radio name="3">校际联合培养</van-radio>
-                <van-radio name="4">名校学分</van-radio>
-                <van-radio name="5">社会文化体验</van-radio>
-                <van-radio name="6">实习实践</van-radio>
-                <van-radio name="7">精品主题类</van-radio>
-                <van-radio name="0">其他</van-radio> -->
               </van-radio-group>
             </div>
-
-            <!-- <div class="row">
-              <div class="title"><span class="required">*</span>报名项目</div>
-              <van-radio-group v-model="entry_project">
-                <van-radio name="1">跋园雅托高能班</van-radio>
-                <van-radio name="2">名校留学申研</van-radio>
-                <van-radio name="3">校际联合培养</van-radio>
-                <van-radio name="4">名校学分</van-radio>
-                <van-radio name="5">社会文化体验</van-radio>
-                <van-radio name="6">实习实践</van-radio>
-                <van-radio name="7">精品主题类</van-radio>
-                <van-radio name="0">其他</van-radio>
-              </van-radio-group>
-            </div> -->
-
-            <!-- <div class="row">
-              <div class="title"><span class="required">*</span>报名项目</div>
-
-              <van-radio-group v-model="entry_project">
-                <van-cell-group>
-                  <van-cell title="短期交流项目" clickable @click="radio = '1'">
-                    <van-radio name="1" />
-                  </van-cell>
-                  <van-cell title="跋园雅托高能班" clickable @click="radio = '2'">
-                    <van-radio name="2" />
-                  </van-cell>
-
-                  <van-cell title="其他" clickable @click="radio = '3'">
-                    <van-radio name="其他" />
-                  </van-cell>
-                </van-cell-group>
-              </van-radio-group>
-            </div> -->
 
             <van-cell-group>
               <van-field v-model="email" label="邮箱" placeholder="请输入电子邮箱"/>
