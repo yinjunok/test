@@ -11,7 +11,7 @@
     <van-row>
       <van-col span="24">
         <div class="intro">
-          <van-panel title="请填写以下信息, 提交后, 请关注微信公众号, 了解报名项目的相关信息">
+          <van-panel title="填写以下内容信息并提交，注意查看微信公众号该项目相关信息。">
             <van-cell-group>
               <van-field required v-model="name" label="姓名" placeholder="请输入姓名"/>
               <van-field required v-model="mobile" maxlength='11' type="number" label="手机" placeholder="请输入手机号码"/>
