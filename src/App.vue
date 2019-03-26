@@ -29,11 +29,39 @@
             </div>
 
             <van-cell-group>
-              <van-field required v-model="department" label="院系" placeholder="请输入院系"/>
-              <van-field required v-model="grade" label="年级" placeholder="请输入年级"/>
+              <van-field required v-model="department" label="院系" placeholder="请输入所在院系"/>
             </van-cell-group>
 
+
+             <div class="row">
+              <div class="title"><span class="required">*</span>请选择所在 <br /> 年级</div>
+              <van-radio-group v-model="grade">
+                <van-radio name="1">一年级</van-radio>
+                <van-radio name="2">二年级</van-radio>
+                <van-radio name="3">三年级</van-radio>
+                <van-radio name="4">四年级</van-radio>
+              </van-radio-group>
+            </div>
+
             <div class="row">
+              <div class="title"><span class="required">*</span>报名项目</div>
+              <van-radio-group v-model="entry_project" @change="pickProjectChange">
+                <van-radio name="1">短期交流项目</van-radio>
+                <div v-if="entry_project === '1'" class="project-input">
+                  <van-field v-model="pick_project" placeholder="请填写具体项目名称" />
+                </div>
+                <van-radio name="2">跋园雅托高能班</van-radio>
+                <van-radio name="3">其他</van-radio>
+                <!-- <van-radio name="3">校际联合培养</van-radio>
+                <van-radio name="4">名校学分</van-radio>
+                <van-radio name="5">社会文化体验</van-radio>
+                <van-radio name="6">实习实践</van-radio>
+                <van-radio name="7">精品主题类</van-radio>
+                <van-radio name="0">其他</van-radio> -->
+              </van-radio-group>
+            </div>
+
+            <!-- <div class="row">
               <div class="title"><span class="required">*</span>报名项目</div>
               <van-radio-group v-model="entry_project">
                 <van-radio name="1">跋园雅托高能班</van-radio>
@@ -45,7 +73,26 @@
                 <van-radio name="7">精品主题类</van-radio>
                 <van-radio name="0">其他</van-radio>
               </van-radio-group>
-            </div>
+            </div> -->
+
+            <!-- <div class="row">
+              <div class="title"><span class="required">*</span>报名项目</div>
+
+              <van-radio-group v-model="entry_project">
+                <van-cell-group>
+                  <van-cell title="短期交流项目" clickable @click="radio = '1'">
+                    <van-radio name="1" />
+                  </van-cell>
+                  <van-cell title="跋园雅托高能班" clickable @click="radio = '2'">
+                    <van-radio name="2" />
+                  </van-cell>
+
+                  <van-cell title="其他" clickable @click="radio = '3'">
+                    <van-radio name="其他" />
+                  </van-cell>
+                </van-cell-group>
+              </van-radio-group>
+            </div> -->
 
             <van-cell-group>
               <van-field v-model="email" label="邮箱" placeholder="请输入电子邮箱"/>
@@ -67,7 +114,12 @@
             </div>
 
             <van-cell-group>
-              <van-field v-model="remark" type="textarea" label="留言" placeholder="请输入留言"/>
+              <van-field
+                v-model="remark"
+                type="textarea"
+                label="留言"
+                placeholder="如需要有其他说明的情况请留言"
+              />
             </van-cell-group>
             <div slot="footer">
               <van-button @click="submit" :loading="submiting" loading-text="提交中..." size="large" type="primary">提交</van-button>
@@ -144,13 +196,14 @@ export default {
       department: '',
       grade: '',
       entry_project: 0,
+      pick_project: '',
       qq: '',
 
       // 不是必选字段
       email: '',
       remark: '',
       english_test: [],
-      english_test_list: ['雅思', '托福', '四级', '六级'],
+      english_test_list: ['雅思', '托福', '四级', '六级', '其他'],
       error_list: [],
 
       // 错误弹窗控制
@@ -186,11 +239,11 @@ export default {
       }
 
       if (this.department === '') {
-        this.error_list.push('院系必选');
+        this.error_list.push('院系必填');
       }
 
-      if (this.entry_project === '') {
-        this.error_list.push('报名项目必选');
+      if (this.pick_project === '') {
+        this.error_list.push('报名项目必填');
       }
 
       if (this.qq === '') {
@@ -222,7 +275,7 @@ export default {
         type: this.type,
         department: this.department,
         grade: this.grade,
-        entry_project: this.entry_project,
+        entry_project: this.pick_project,
         remark: this.remark,
         qq: this.qq,
         english_test: this.english_test.join(','),
@@ -248,13 +301,27 @@ export default {
       }
       this.submiting = false;
     },
+
+    pickProjectChange(name) {
+      if (name === '1') {
+        this.pick_project = '';
+      }
+
+      if (name === '2') {
+        this.pick_project = '跋园雅托高能班';
+      }
+
+      if (name === '3') {
+        this.pick_project = '其他'
+      }
+    }
   }
 };
 </script>
 
 <style lang="less">
 #app {
-  background: #eee;
+  background: rgba(80, 152, 152, 1);
 }
 
 .banner-wrap {
@@ -287,11 +354,20 @@ export default {
   border-radius: 5px;
   overflow: hidden;
 
+  .van-cell {
+    background: rgba(80, 152, 152, .1);
+  }
+
+  .van-panel__footer {
+    background: rgba(80, 152, 152, .1);
+  }
+
   .row {
     display: flex;
     padding: 10px 15px;
     font-size: 14px;
     line-height: 24px;
+    background: rgba(80, 152, 152, .1);
     
     .title {
       max-width: 90px;
@@ -335,5 +411,15 @@ export default {
   font-size: 16px;
   padding: 20px 20px 10px;
   line-height: 1.5;
+}
+
+.project-input {
+  width: 100%;
+  
+  .van-cell {
+    padding: 5px;
+    margin-left: 27px;
+    background: rgba(80, 152, 152, .2);
+  }
 }
 </style>
