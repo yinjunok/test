@@ -46,7 +46,7 @@
             <div class="row">
               <div class="title"><span class="required">*</span>报名项目</div>
               <van-radio-group v-model="entry_project" @change="pickProjectChange">
-                <van-radio name="1">短期交流项目</van-radio>
+                <van-radio name="1">海外交流项目</van-radio>
                 <div v-if="entry_project === '1'" class="project-input">
                   <van-field v-model="pick_project" placeholder="请填写具体项目名称" />
                 </div>
